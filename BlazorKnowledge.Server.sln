@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C66D0B9E-4162-47A8-887E-D9B771723A3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E4787ECC-332A-4C66-A03D-10BC81E80F5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{FAFAF909-361E-4D69-B40E-FAB50A3FF3A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{23FA117C-A1B9-4342-A7EC-BC7B3CF2E36F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{55FD78A2-8DA8-4DD5-9D3F-B613DC3544C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorKnowledge.Server", "src\Server\BlazorKnowledge.Server\BlazorKnowledge.Server.csproj", "{12FCAF32-44FC-449D-A982-AE9841DF38D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D5058748-0F18-4E60-80BC-9E91668C77DA}"
+	ProjectSection(SolutionItems) = preProject
+		config.props = config.props
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FCAF32-44FC-449D-A982-AE9841DF38D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FCAF32-44FC-449D-A982-AE9841DF38D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FCAF32-44FC-449D-A982-AE9841DF38D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FCAF32-44FC-449D-A982-AE9841DF38D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FAFAF909-361E-4D69-B40E-FAB50A3FF3A5} = {C66D0B9E-4162-47A8-887E-D9B771723A3C}
+		{55FD78A2-8DA8-4DD5-9D3F-B613DC3544C4} = {23FA117C-A1B9-4342-A7EC-BC7B3CF2E36F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCC67591-0109-4968-8B65-B3C504BD21CB}
+	EndGlobalSection
+EndGlobal
