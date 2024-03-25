@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Product>github.com/mhanzel12</Product>
+    <PackageIcon></PackageIcon>
+    <NeutralLanguage>en-001</NeutralLanguage>
+  </PropertyGroup>
+
+  <Import Project="..\..\..\config.props" />
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Test\Core.Test.csproj" />
+    <ProjectReference Include="..\Server.Shared.DataModelSource\Server.Shared.DataModelSource.csproj" />
+    <ProjectReference Include="..\Server.Shared\Server.Shared.csproj" />
+    <ProjectReference Include="..\Server.Test\Server.Test.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SQLite.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

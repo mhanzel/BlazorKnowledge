@@ -1,5 +1,8 @@
 <Project>
   <PropertyGroup>
-    <AssemblyName>BlazorTest2</AssemblyName>
+	<Authors>mhanzel</Authors>
+    <AssemblyName>BlazorKnowledge</AssemblyName>
+	<Product>github.com/mhanzel</Product>
+    <VersionPrefix>2024.1.0.0-dev</VersionPrefix>
   </PropertyGroup>
 </Project>
