@@ -6,15 +6,15 @@ using Server.Shared.DataModelSource.Entities.Abstracts;
 
 namespace Server.Shared.DataModelSource.Entities.Tables;
 
-public class Order : BaseEntity
+public class OrderEntity : BaseEntity
 {
     [StringLength(255)]
     public string? OrderNumber { get; set; }
     public DateTime OrderDate { get; set; }
 
     [ForeignKey("CustomerId")]
-    public Customer? Customer { get; set; }
+    public CustomerEntity? Customer { get; set; }
     public int CustomerId { get; set; }
 
-    public List<OrderDetail>? OrderDetails { get; set; }
+    public List<OrderDetailEntity>? OrderDetails { get; set; }
 }
