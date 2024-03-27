@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Core.Test\Core.Test.csproj" />
+    <ProjectReference Include="..\Server.Modules.Job\Server.Modules.Job.csproj" />
     <ProjectReference Include="..\Server.Shared.DataModelSource\Server.Shared.DataModelSource.csproj" />
-    <ProjectReference Include="..\Server.Shared\Server.Shared.csproj" />
     <ProjectReference Include="..\Server.Test\Server.Test.csproj" />
   </ItemGroup>
 

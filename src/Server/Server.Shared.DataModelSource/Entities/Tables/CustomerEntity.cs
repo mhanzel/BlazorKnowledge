@@ -5,7 +5,7 @@ using Server.Shared.DataModelSource.Entities.Abstracts;
 
 namespace Server.Shared.DataModelSource.Entities.Tables;
 
-public class Customer : BaseEntity
+public class CustomerEntity : BaseEntity
 {
     [StringLength(255)]
     public string? FirstName { get; set; }
@@ -14,5 +14,5 @@ public class Customer : BaseEntity
     [StringLength(255)]
     public string? Email { get; set; }
 
-    public List<Order>? Orders { get; set; }
+    public List<OrderEntity>? Orders { get; set; }
 }

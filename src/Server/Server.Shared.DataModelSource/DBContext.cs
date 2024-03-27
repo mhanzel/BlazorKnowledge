@@ -12,13 +12,13 @@ public class DBContext : DbContext
 {
     public DBContext(DbContextOptions options) : base(options) { }
 
-    public DbSet<Customer> Customer => Set<Customer>();
-    public DbSet<Order> Order => Set<Order>();
-    public DbSet<OrderDetail> OrderDetail => Set<OrderDetail>();
-    public DbSet<Product> Product => Set<Product>();
+    public DbSet<CustomerEntity> Customer => Set<CustomerEntity>();
+    public DbSet<OrderEntity> Order => Set<OrderEntity>();
+    public DbSet<OrderDetailEntity> OrderDetail => Set<OrderDetailEntity>();
+    public DbSet<ProductEntity> Product => Set<ProductEntity>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Customer>().HasIndex(x => x.Id).IsUnique();
+        modelBuilder.Entity<CustomerEntity>().HasIndex(x => x.Id).IsUnique();
 
         // Pobierz wszystkie typy encji zdefiniowane w kontekście bazy danych
         var entityTypes = modelBuilder.Model.GetEntityTypes();
@@ -35,7 +35,7 @@ public class DBContext : DbContext
             }
         }
 
-        modelBuilder.Entity<Product>()
+        modelBuilder.Entity<ProductEntity>()
             .Property(e => e.Price)
             .HasPrecision(18, 4);
         

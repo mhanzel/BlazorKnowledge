@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Modules.Job\Core.Modules.Job.csproj" />
+    <ProjectReference Include="..\..\Core\Core.Shared\Core.Shared.csproj" />
+    <ProjectReference Include="..\Server.Shared\Server.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

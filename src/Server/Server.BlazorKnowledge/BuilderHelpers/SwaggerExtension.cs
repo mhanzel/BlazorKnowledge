@@ -1,24 +1,25 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
-namespace Server.Shared.Swagger;
+namespace Server.BlazorKnowledge.BuilderHelpers;
 
-public static class SwaggerExtension
-{        
+internal static class SwaggerExtension
+{
     //Swagger - dodanie do serviców
-    public static void AddSwaggerNuget(this IServiceCollection services)
+    internal static void AddSwaggerNuget(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
     }
 
     //Swagger - użycie i ustwienie go jako domyślną przeglądarkę
-    public static void AddSwaggerStartPage(this WebApplication app)
+    internal static void AddSwaggerStartPage(this WebApplication app)
     {
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Blazor Knowledge");
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", typeof(SwaggerExtension).Assembly.GetName().Name);
             c.RoutePrefix = string.Empty;
         });
     }

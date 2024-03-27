@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Shared.DataModelSource;
+using Server.Shared.DataModelSource.Entities.Tables;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Server.Modules.Job;
 
-[ApiController]
-[Route("api/[controller]")]
+//[ApiController]
+//[Route("api/[controller]")]
 public class TestController : ControllerBase
 {
     readonly DBContext DBContext;
@@ -17,32 +19,32 @@ public class TestController : ControllerBase
         DBContext = _dBContext;
     }
 
-    [HttpGet]
-    public IActionResult GetTest()
+    //[HttpGet]
+    public async Task<IActionResult> GetTest()
     {
         var result = DBContext.Customer.Select(x => x.FirstName);
-        return Ok(result);
+        return StatusCode(200, result);
     }
-    [HttpPost]
-    public IActionResult AddTest()
+    //[HttpPost]
+    public async Task<IActionResult> AddTest()
     {
-        DBContext.Customer.Add(new Shared.DataModelSource.Entities.Tables.Customer()
+        DBContext.Customer.Add(new Customer()
         {
             FirstName = "Jan",
             LastName = "Kowal",
             Email = "jan.kowal@gmail.com",
         });
-        DBContext.SaveChangesAsync();
-        return Ok();
+        await DBContext.SaveChangesAsync();
+        return StatusCode(200);
     }
-    [HttpDelete]
-    public IActionResult DeleteTest()
+    //[HttpDelete]
+    public async Task<IActionResult> DeleteTest()
     {
-        DBContext.Customer.ForEachAsync(x =>
+        await DBContext.Customer.ForEachAsync(x =>
         {
             DBContext.Customer.Remove(x);
         });
-        DBContext.SaveChangesAsync();
+        await DBContext.SaveChangesAsync();
         return Ok();
     }
 }

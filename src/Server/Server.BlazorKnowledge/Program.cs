@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Server.Shared.DataModelSource;
-using Server.Shared.Swagger;
+using Server.BlazorKnowledge.BuilderHelpers;
 
 
 namespace Server.Shared;
@@ -14,6 +14,8 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddControllers();
+
+        builder.Services.AddServiceRegistration();
 
         builder.Services.AddSwaggerNuget();
 
