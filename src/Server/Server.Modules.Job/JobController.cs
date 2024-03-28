@@ -1,45 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Modules.Job.Model.Queries;
+using Microsoft.AspNetCore.Mvc;
+using Server.Modules.Job.Interfaces;
 using Server.Shared;
 using Server.Shared.DataModelSource;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Server.Modules.Job
+namespace Server.Modules.Job;
+
+[ApiController]
+[Route("api/[controller]")]
+public class JobController : HandlerControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class JobController : HandlerControllerBase
+    readonly IJobService JobService;
+
+    public JobController(IJobService jobService)
     {
-        readonly DBContext DBContext;
-
-        public JobController(DBContext _dBContext)
-        {
-            DBContext = _dBContext;
-        }
-
-        [HttpGet("GetCustomers")]
-        public async Task<IActionResult> GetCustomers()
-        {
-            var result = DBContext.Customer.ToList();
-            return StatusCode(200, result);
-        }
-
-        [HttpGet("GetOrders")]
-        public async Task<IActionResult> GetOrders()
-        {
-            var result = DBContext.Order.ToList();
-            return StatusCode(200, result);
-        }
-
-        [HttpGet("GetProducts")]
-        public async Task<IActionResult> GetProducts()
-        {
-            var result = DBContext.Product.ToList();
-            return StatusCode(200, result);
-        }
-
+        JobService = jobService;
     }
+
+    [HttpPost("GetCustomers")]
+    public async Task<ActionResult<GetCustomersQueryResult>> GetCustomers(GetCustomersQueryParameters parameter, CancellationToken cancellationToken = default)
+        => await ExecuteAsync(async () => await JobService.GetCustomersAsync(parameter, cancellationToken));
+    
+    [HttpPost("GetOrders")]
+    public async Task<ActionResult<GetOrdersQueryResult>> GetOrders(GetOrdersQueryParameters parameter, CancellationToken cancellationToken = default)
+        => await ExecuteAsync(async () => await JobService.GetOrdersAsync(parameter, cancellationToken));
+
+    [HttpPost("GetProducts")]
+    public async Task<ActionResult<GetProductsQueryResult>> GetProducts(GetProductsQueryParameters parameter, CancellationToken cancellationToken = default)
+        => await ExecuteAsync(async () => await JobService.GetProductsAsync(parameter, cancellationToken));
 }

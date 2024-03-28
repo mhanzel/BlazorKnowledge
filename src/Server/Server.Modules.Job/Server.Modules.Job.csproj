@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Modules.Job.Model\Core.Modules.Job.Model.csproj" />
     <ProjectReference Include="..\..\Core\Core.Modules.Job\Core.Modules.Job.csproj" />
     <ProjectReference Include="..\..\Core\Core.Shared\Core.Shared.csproj" />
     <ProjectReference Include="..\Server.Shared\Server.Shared.csproj" />

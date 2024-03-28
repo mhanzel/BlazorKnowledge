@@ -15,4 +15,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.17" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Modules.Job.Infrastructure\Core.Modules.Job.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Core\Core.Modules.Job\Core.Modules.Job.csproj" />
+    <ProjectReference Include="..\..\Core\Core.Shared\Core.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

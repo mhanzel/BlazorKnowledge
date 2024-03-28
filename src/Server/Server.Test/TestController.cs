@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Server.Shared.DataModelSource;
-using Server.Shared.DataModelSource.Entities.Tables;
-using System.Collections.Generic;
+using Server.Shared.DataModelSource.Entities;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,7 +27,7 @@ public class TestController : ControllerBase
     //[HttpPost]
     public async Task<IActionResult> AddTest()
     {
-        DBContext.Customer.Add(new Customer()
+        DBContext.Customer.Add(new CustomerEntity()
         {
             FirstName = "Jan",
             LastName = "Kowal",

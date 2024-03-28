@@ -1,25 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Server.Shared;
 
 public abstract class HandlerControllerBase : ControllerBase
 {
-    protected async Task<object> ExecuteAsync(Func<object, Task<object>>? method, object parameter)
-    {
-        var returlResult = StatusCode((int)StatusCodesEnum.InternalServerError, null);
-        
+    protected async Task<ActionResult<T>> ExecuteAsync<T>(Func<Task<T>>? method)
+    {      
         try
         {
             if (method == null) throw new ArgumentNullException("Funkcja wykonawcza nie istnieje.");
 
-            var result = await method.Invoke(parameter);
-            returlResult = StatusCode((int)StatusCodesEnum.OK, result);
+            var result = await method.Invoke();
+
+            return StatusCode((int)StatusCodesEnum.OK, result);
         }
         catch (ArgumentNullException ex)
         {
@@ -44,8 +39,5 @@ public abstract class HandlerControllerBase : ControllerBase
         {
             return StatusCode((int)StatusCodesEnum.InternalServerError, ex.Message);
         }
-
-        return returlResult;
-
     }
 }

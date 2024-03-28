@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Server.Shared.DataModelSource;
 
@@ -10,14 +11,16 @@ using Server.Shared.DataModelSource;
 namespace Server.Shared.DataModelSource.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240327023826_SQLite3.0")]
+    partial class SQLite30
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.17");
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.CustomerEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.CustomerEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,12 +46,13 @@ namespace Server.Shared.DataModelSource.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Customer");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.OrderDetailEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.OrderDetailEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -80,7 +84,7 @@ namespace Server.Shared.DataModelSource.Migrations
                     b.ToTable("OrderDetail");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.OrderEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.OrderEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,7 +115,7 @@ namespace Server.Shared.DataModelSource.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.ProductEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.ProductEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -142,15 +146,15 @@ namespace Server.Shared.DataModelSource.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.OrderDetailEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.OrderDetailEntity", b =>
                 {
-                    b.HasOne("Server.Shared.DataModelSource.Entities.OrderEntity", "Order")
+                    b.HasOne("Server.Shared.DataModelSource.Entities.Tables.OrderEntity", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Server.Shared.DataModelSource.Entities.ProductEntity", "Product")
+                    b.HasOne("Server.Shared.DataModelSource.Entities.Tables.ProductEntity", "Product")
                         .WithMany("OrderDetails")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -161,9 +165,9 @@ namespace Server.Shared.DataModelSource.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.OrderEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.OrderEntity", b =>
                 {
-                    b.HasOne("Server.Shared.DataModelSource.Entities.CustomerEntity", "Customer")
+                    b.HasOne("Server.Shared.DataModelSource.Entities.Tables.CustomerEntity", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -172,17 +176,17 @@ namespace Server.Shared.DataModelSource.Migrations
                     b.Navigation("Customer");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.CustomerEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.CustomerEntity", b =>
                 {
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.OrderEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.OrderEntity", b =>
                 {
                     b.Navigation("OrderDetails");
                 });
 
-            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.ProductEntity", b =>
+            modelBuilder.Entity("Server.Shared.DataModelSource.Entities.Tables.ProductEntity", b =>
                 {
                     b.Navigation("OrderDetails");
                 });
